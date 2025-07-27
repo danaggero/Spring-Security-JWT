@@ -1,6 +1,7 @@
 package com.example.springjwt.controller;
 
 import com.example.springjwt.jwt.JWTUtil;
+import com.example.springjwt.repository.RefreshRepository;
 import com.example.springjwt.service.ReissueService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,10 +16,13 @@ public class ReissueController {
 
     private final JWTUtil jwtUtil;
     private final ReissueService reissueService;
+    private final RefreshRepository refreshRepository;
 
-    public ReissueController(JWTUtil jwtUtil, ReissueService reissueService) {
+    public ReissueController(JWTUtil jwtUtil, ReissueService reissueService, RefreshRepository refreshRepository) {
         this.jwtUtil = jwtUtil;
         this.reissueService = reissueService;
+        this.refreshRepository = refreshRepository;
+
     }
 
     @PostMapping("/reissue")
